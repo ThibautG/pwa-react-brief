@@ -33,8 +33,8 @@ export default defineConfig({
       workbox: {
         globPatterns: ['**//{js,jsx,css,html,ico,png,svg}'],
         runtimeCaching: [{
-          urlPattern: /^https:\/\/iot.olasserre.dev-campus\.fr\/.*/i,
-          handler: 'CacheFirst',
+          urlPattern: /^https:\/\/iot\.olasserre\.dev-campus\.fr\/api\/.*/i,
+          handler: 'NetworkFirst',
           options: {
             cacheName: 'iot',
             expiration: {
@@ -46,9 +46,6 @@ export default defineConfig({
             }
           }
         }]
-      },
-      devOptions: {
-        enabled: true
       }
     })
   ],

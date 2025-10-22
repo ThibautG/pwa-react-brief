@@ -1,5 +1,10 @@
 import React from 'react';
 
+/**
+ * Displays a table of probe sensor data.
+ * @param {Object[]} probsDatas - List of probe records.
+ * @returns {JSX.Element} Rendered table of probes data.
+ */
 function ProbsTab({probsDatas}) {
   return (
       <div className="overflow-x-auto shadow-lg rounded-2xl bg-white">

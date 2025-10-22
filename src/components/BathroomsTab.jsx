@@ -1,7 +1,11 @@
 import React from 'react';
 
+/**
+ * Displays a table of bathroom sensor data.
+ * @param {Object[]} bathroomsDatas - List of bathroom records.
+ * @returns {JSX.Element} Rendered table of bathrooms data.
+ */
 function BathroomsTab({bathroomsDatas}) {
-  console.log(bathroomsDatas)
   return (
     <div className="overflow-x-auto shadow-lg rounded-2xl bg-white">
       <table className="w-full text-sm text-left text-gray-600 border border-gray-200 rounded-lg">

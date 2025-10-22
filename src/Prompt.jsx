@@ -3,6 +3,11 @@ import './prompt.css'
 
 import { useRegisterSW } from 'virtual:pwa-register/react'
 
+/**
+ * Reload prompt component.
+ * Displays update or offline-ready notifications for the PWA.
+ * @returns {JSX.Element} The reload prompt UI.
+ */
 export function ReloadPrompt() {
   const {
     offlineReady: [offlineReady, setOfflineReady],
@@ -10,7 +15,6 @@ export function ReloadPrompt() {
     updateServiceWorker,
   } = useRegisterSW({
     onRegistered(r) {
-      // eslint-disable-next-line prefer-template
       console.log('SW Registered: ' + r)
     },
     onRegisterError(error) {
