@@ -9,10 +9,10 @@ export default defineConfig({
     react(),
     tailwindcss,
     VitePWA({
-      registerType: 'autoUpdate',
+      registerType: 'prompt',
       includeAssets: ['vite.svg'],
       manifest: {
-        name: 'Progressive Web App',
+        name: 'IoT Web App',
         short_name: 'PWA',
         description: 'Application Progressive Web App',
         theme_color: '#000000',
@@ -31,7 +31,21 @@ export default defineConfig({
         ]
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg}']
+        globPatterns: ['**//{js,jsx,css,html,ico,png,svg}'],
+        runtimeCaching: [{
+          urlPattern: /^https:\/\/iot.olasserre.dev-campus\.fr\/.*/i,
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'iot',
+            expiration: {
+              maxEntries: 100,
+              maxAgeSeconds: 60
+            },
+            cacheableResponse: {
+              statuses: [0, 200]
+            }
+          }
+        }]
       },
       devOptions: {
         enabled: true
