@@ -4,11 +4,9 @@ import {getAllSondes} from "./services/sondesServices.jsx";
 
 function App() {
   const [sondes, setSondes] = useState([])
-  console.log(sondes)
   useEffect(() => {
     const fetchSondes = async () => {
       const data = await getAllSondes()
-      console.log('data', data)
       setSondes(data)
     }
     fetchSondes()
