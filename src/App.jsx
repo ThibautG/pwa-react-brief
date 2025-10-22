@@ -4,13 +4,29 @@ import {getAllSondes} from "./services/sondesServices.jsx";
 
 function App() {
   const [sondes, setSondes] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+
   useEffect(() => {
     const fetchSondes = async () => {
-      const data = await getAllSondes()
-      setSondes(data)
+      try {
+        const data = await getAllSondes()
+        setSondes(data)
+      } catch (error) {
+        console.error("Erreur lors du chargement des sondes", error)
+      } finally {
+        setIsLoading(false)
+      }
     }
-    fetchSondes()
+    void fetchSondes()
   }, []);
+
+  if (isLoading) {
+    return (
+      <div className="overflow-x-auto shadow-lg rounded-2xl bg-gray-50 p-3.5">
+        <p className={'text-xl italic'}>Chargement des données...</p>
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
